@@ -12,8 +12,8 @@ $( window ).on('load', function() {
 
 
   //sound testing
-  var musicVolume = 0.0;
-  var soundEffectsVolume = 1;
+  var musicVolume = 0.5;
+  var soundEffectsVolume = 0.5;
   var move = 0;
   var theme = new Audio('sound/theme.mp3');
   var open = new Audio('sound/open-menu.wav');
@@ -86,6 +86,20 @@ $( window ).on('load', function() {
     event.preventDefault();
 
   }});
+  $(".music-volume").mousemove(function(){
+    $(".music-label").replaceWith("<p class='music-label'>Music Volume: "+$(this).val()+"%</p>");
+    theme.volume = $(this).val()/100;
+
+  });
+  $(".sound-effects-volume").mousemove(function(){
+    $(".sound-effects-label").replaceWith("<p class='sound-effects-label'>Sound Effects Volume: "+$(this).val()+"%</p>");
+    soundEffectsVolume = $(this).val()/100;
+    selection.volume = $(this).val()/100;
+    open.volume = $(this).val()/100;
+    openReverse.volume = $(this).val()/100;
+
+  });
+
 
 
 
