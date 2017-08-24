@@ -7,6 +7,7 @@ $( window ).on('load', function() {
   $(".main-loading").find("h2").animate({opacity: 0, top: 200}, 800);
   $(".main-loading").animate({opacity: 0}, 800, function(){$(".main-loading").css("display", "none");});
 
+  $("html").css( 'cursor', 'url(img/uipack-rpg/PNG/cursorHand_beige.png), auto' );
 
 
 
@@ -86,6 +87,16 @@ $( window ).on('load', function() {
     event.preventDefault();
 
   }});
+
+
+
+  $( "html" ).contextmenu(function() {
+    event.preventDefault();
+  });
+
+
+
+
   $(".music-volume").mousemove(function(){
     $(".music-label").replaceWith("<p class='music-label'>Music Volume: "+$(this).val()+"%</p>");
     theme.volume = $(this).val()/100;
@@ -109,8 +120,8 @@ $( window ).on('load', function() {
 
   //tile generation / board builder
   var tileSize = 64;
-  var boardWidth = 10;
-  var boardHeight = 10;
+  var boardWidth = 35;
+  var boardHeight = 35;
   var numberOfTiles = boardWidth*boardHeight;
   $(".game-board").css("width", tileSize*boardWidth);
   $(".game-board").css("height", tileSize*boardHeight);
