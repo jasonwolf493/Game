@@ -1,0 +1,298 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
+  margin: 0
+  padding: 0
+  border: 0
+  font-size: 100%
+  font: inherit
+  vertical-align: baseline
+
+/* HTML5 display-role reset for older browsers
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+  display: block
+
+html
+  height: 100%
+  background-color: #252525
+
+body
+  overflow: hidden
+  height: 100vh
+  width: 100vw
+  line-height: 1
+
+ol, ul
+  list-style: none
+
+blockquote, q
+  quotes: none
+
+blockquote
+  &:before, &:after
+    content: ''
+    content: none
+
+q
+  &:before, &:after
+    content: ''
+    content: none
+
+table
+  border-collapse: collapse
+  border-spacing: 0
+a:-webkit-any-link
+  cursor: url(../../HTML5game/img/uipack-rpg/PNG/cursorHand_beige.png), auto !important
+
+/*Start animation
+@keyframes animationFrames
+  0%
+    transform: translate(0px, 0px)
+
+  50%
+    transform: translate(0px, -25px)
+
+  101%
+    transform: translate(0px, 0px)
+
+
+@keyframes animationFrames
+  0%
+    transform: translate(0px, 0px)
+
+  50%
+    transform: translate(0px, -25px)
+
+  101%
+    transform: translate(0px, 0px)
+
+
+@-moz-keyframes animationFrames
+  0%
+    -moz-transform: translate(0px, 0px)
+
+  50%
+    -moz-transform: translate(0px, -25px)
+
+  101%
+    -moz-transform: translate(0px, 0px)
+
+
+@-webkit-keyframes animationFrames
+  0%
+    -webkit-transform: translate(0px, 0px)
+
+  50%
+    -webkit-transform: translate(0px, -25px)
+
+  101%
+    -webkit-transform: translate(0px, 0px)
+
+
+@-o-keyframes animationFrames
+  0%
+    -o-transform: translate(0px, 0px)
+
+  50%
+    -o-transform: translate(0px, -25px)
+
+  101%
+    -o-transform: translate(0px, 0px)
+
+
+@-ms-keyframes animationFrames
+  0%
+    -ms-transform: translate(0px, 0px)
+
+  50%
+    -ms-transform: translate(0px, -25px)
+
+  101%
+    -ms-transform: translate(0px, 0px)
+
+
+@font-face
+  font-family: trajan
+  src: url(../fonts/trajan/Trajan.ttf)
+
+
+.main-loading
+  h1
+    position: relative
+    -webkit-font-smoothing: antialiased
+    background-color: rgb(175, 175, 175)
+    color: rgba(0, 0, 0, 0)
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5)
+    -webkit-background-clip: text
+    padding-left: 13px
+    font-family: arial, serif
+    font-weight: bold
+    font-size: 3.5em
+    animation: animationFrames ease-in-out 1.35s
+    animation-iteration-count: infinite
+    transform-origin: 50% 50%
+    -webkit-animation: animationFrames ease-in-out 1.35s
+    -webkit-animation-iteration-count: infinite
+    -webkit-transform-origin: 50% 50%
+    -moz-animation: animationFrames ease-in-out 1.35s
+    -moz-animation-iteration-count: infinite
+    -moz-transform-origin: 50% 50%
+    -o-animation: animationFrames ease-in-out 1.35s
+    -o-animation-iteration-count: infinite
+    -o-transform-origin: 50% 50%
+    -ms-animation: animationFrames ease-in-out 1.35s
+    -ms-animation-iteration-count: infinite
+    -ms-transform-origin: 50% 50%
+  h2
+    position: relative
+    color: white
+    font-family: arial, serif
+    font-style: italic
+    opacity: 0.5
+    padding-top: 20px
+    position: fixed
+    width: 100%
+  z-index: 9999
+  background-color: black
+  background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)
+  opacity: 1
+  text-align: center
+  height: 100%
+
+.main-loading-container
+  width: 100%
+  height: 50%
+  transform: translateY(50%)
+  top: -50%
+
+.actions-bar
+  width: 100%
+  display: none
+  height: 30px
+  background-color: #1d1d1d
+  position: fixed
+  z-index: 50
+  position: fixed
+  top: 0
+  left: 0
+  ul
+    height: 30px
+    padding-left: 25px
+    li
+      padding-top: 8px
+      margin-right: 15px
+      font-family: arial, serif
+      color: white
+      float: left
+      a
+        text-decoration: none
+        color: white
+
+.actions-box
+  display: none
+  background-color: rgba(0, 0, 0, 0.9)
+  border-radius: 5px
+  padding: 10px
+  width: 33%
+  position: fixed
+  z-index: 99
+  top: 50px
+  right: 0
+  ul
+    float: right
+    width: calc(100% - 25px)
+    li a
+      text-decoration: none
+      color: wheat
+
+.settings-menu
+  color: white
+  right: 50%
+  transform: translateX(50%)
+  background-color: rgba(0, 0, 0, 0.9)
+  border-radius: 5px
+  padding: 10px
+  z-index: 9999
+  display: none
+  position: fixed
+  top: 30px
+  height: 50vh
+  width: 50vh
+  input
+    margin-top: 10px
+
+.actions-box-title
+  font-family: trajan
+  background-color: #97714b
+  border-radius: 5px 5px 0 0
+  border-bottom: 1px solid black
+  padding: 5px
+  margin: -10px
+
+.action-area
+  height: 150px
+  width: 100%
+
+.pointer-container
+  width: 20px
+  display: inline-block
+
+div.actions-box-title p
+  color: white
+  font-weight: bold
+  font-family: trajan,arial,serif
+  user-select: none
+
+.pointer
+  position: relative
+
+.game-board
+  // top: 10px
+  // left: 10px
+  overflow: hidden
+  position: relative
+  border: 1px solid black
+  margin-left: auto
+  margin-right: auto
+
+.tile
+  -webkit-user-select: none
+  background-repeat: no-repeat
+  background-size: cover
+  position: relative
+  z-index: 3
+
+img
+  -webkit-user-select: none
+
+input[type=range]
+  -webkit-appearance: none
+  /* Hides the slider so that custom slider can be made
+  width: 100%
+  /* Specific width is required for Firefox.
+  background: transparent
+  /* Otherwise white in Chrome
+  &::-webkit-slider-thumb
+    -webkit-appearance: none
+  &:focus
+    outline: none
+    /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though.
+  &::-webkit-slider-thumb
+    -webkit-appearance: none
+    border: 1px solid #000000
+    height: 16px
+    width: 16px
+    border-radius: 16px
+    background: #d3d3d3
+    // cursor: default
+    margin-top: -7px
+    /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
+    /* Add cool effects to your sliders!
+  &::-webkit-slider-runnable-track
+    width: 100%
+    height: 5px
+    // cursor: default
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
+    background: #97714b
+    border-radius: 1.3px
+    border: 0.2px solid #010101

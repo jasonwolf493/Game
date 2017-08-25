@@ -161,12 +161,12 @@ $( window ).on('load', function() {
               location = $(this).position();
               repositionX = Math.floor((Math.random() * 15) + 10);
               repositionY = Math.floor((Math.random() * 15) + 10);
-              console.log(repositionY);
+
               positionX = location.left+repositionX;
               positionY = location.top+repositionY;
-              console.log(positionY+" "+positionX);
-              $(".game-board").append("<img style='top:"+positionY+"px; left:"+positionX+"px; position:absolute; height:35px; width:35px; ' src=\"img/foliagepack/PNG/default/foliagePack_018.png\" class='grass'></div>");
-              console.log($(this).position());
+
+              $(".game-board").append("<img style='top:"+positionY+"px; left:"+positionX+"px; position:absolute; z-index:4; height:35px; width:35px; ' src=\"img/foliagepack/PNG/default/foliagePack_018.png\" class='grass'></div>");
+
             }
           })
         }
@@ -183,12 +183,12 @@ $( window ).on('load', function() {
               location = $(this).position();
               repositionX = Math.floor((Math.random() * 40) + 10);
               repositionY = Math.floor((Math.random() * 40) + 10);
-              console.log(repositionY);
+
               positionX = location.left+repositionX;
               positionY = location.top+repositionY;
-              console.log(positionY+" "+positionX);
-              $(".game-board").append("<img style='top:"+positionY+"px; left:"+positionX+"px; position:absolute; height:35px; width:35px; ' src=\"img/foliagepack/PNG/Retina/foliagePack_020.png\" class='grass'></div>");
-              console.log($(this).position());
+
+              $(".game-board").append("<img style='top:"+positionY+"px; left:"+positionX+"px; position:absolute; z-index:4; height:35px; width:35px; ' src=\"img/foliagepack/PNG/Retina/foliagePack_020.png\" class='grass'></div>");
+
             }
           })
         }
@@ -207,15 +207,15 @@ $( window ).on('load', function() {
               location = $(this).position();
               repositionX = Math.floor((Math.random() * 40) + 10);
               repositionY = Math.floor((Math.random() * 40) + 10);
-              console.log(repositionY);
+
               positionX = location.left+repositionX;
               positionY = location.top+repositionY;
-              console.log(positionY+" "+positionX);
+
 
 
               // console.log(spot);
-              $(".game-board").append("<img style='top:"+positionY+"px; left:"+positionX+"px; position:absolute; height:108px; width:135px; ' src=\"img/foliagepack/PNG/Retina/foliagePack_057.png\" class='boulder'></div>");
-              console.log($(this).position());
+              $(".game-board").append("<img style='top:"+positionY+"px; left:"+positionX+"px; position:absolute; z-index:5; height:108px; width:135px; ' src=\"img/foliagepack/PNG/Retina/foliagePack_057.png\" class='boulder'></div>");
+
             }
           })
         }
@@ -230,5 +230,9 @@ beachGeneration();
         });
         $('img').on('dragstart', function(event) { event.preventDefault(); });
         $('div').on('dragstart', function(event) { event.preventDefault(); });
+        $('p').on('dragstart', function(event) { event.preventDefault(); });
+        $('h1').on('dragstart', function(event) { event.preventDefault(); });
+        $('h2').on('dragstart', function(event) { event.preventDefault(); });
+      //  $('a').on('dragstart', function(event) { event.preventDefault(); });
 
   });

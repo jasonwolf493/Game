@@ -5,15 +5,43 @@ $( window ).on('load', function() {
   $(".main-loading").find("h1").css("-webkit-animation", "unset");
   $(".main-loading").find("h1").animate({opacity: 0, top:-100}, 500);
   $(".main-loading").find("h2").animate({opacity: 0, top: 200}, 800);
-  $(".main-loading").animate({opacity: 0}, 800, function(){$(".main-loading").css("display", "none");});
+  $(".main-loading").animate({opacity: 0}, 800, function(){$(".main-loading").css("display", "none");$(".actions-bar").css("display", "inline-block");});
 
+//Set cursor
   $("html").css( 'cursor', 'url(img/uipack-rpg/PNG/cursorHand_beige.png), auto' );
+  $("a").on("hover", function(){
+    $(this).css( 'cursor', 'url(img/uipack-rpg/PNG/cursorHand_beige.png), auto' );
+  });
 
+  //make map draggable
+  function handle_mousedown(e){
+    if ( event.which == 2 ){      window.my_dragging = {};
+          my_dragging.pageX0 = e.pageX;
+          my_dragging.pageY0 = e.pageY;
+          my_dragging.elem = this;
+          my_dragging.offset0 = $(this).offset();
+          function handle_dragging(e){
+              var left = my_dragging.offset0.left + (e.pageX - my_dragging.pageX0);
+              var top = my_dragging.offset0.top + (e.pageY - my_dragging.pageY0);
+              $(my_dragging.elem)
+              .offset({top: top, left: left});
+          }
+          function handle_mouseup(e){
+              $('body')
+              .off('mousemove', handle_dragging)
+              .off('mouseup', handle_mouseup);
+          }
+          $('body')
+          .on('mouseup', handle_mouseup)
+          .on('mousemove', handle_dragging);}
+
+  }
+  $('.game-board').mousedown(handle_mousedown);
 
 
 
   //sound testing
-  var musicVolume = 0.5;
+  var musicVolume = 0.1;
   var soundEffectsVolume = 0.5;
   var move = 0;
   var theme = new Audio('sound/theme.mp3');
@@ -27,7 +55,76 @@ $( window ).on('load', function() {
   theme.play();
 
 
+
+
+//get location of gameboard. needs to be cleaned probably dont need gameboard anymore since we drag
+  function locationParse(returnWhat){
+
+    var top = $(".game-board").css("top");
+    var left = $(".game-board").css("left");
+    var playerTop = $(".player").css("top");
+    var playerLeft = $(".player").css("left");
+    switch (returnWhat) {
+      case "playerLocationLeft":
+        var playerLocationLeft = playerLeft.indexOf("p");
+        var cleanedPx = playerLeft.substr(0,playerLocationLeft);
+        playerLocationLeft = parseInt(cleanedPx);
+        console.log(playerLocationLeft);
+        return playerLocationLeft;
+        break;
+
+      case "playerLocationTop":
+        var playerLocationTop = playerTop.indexOf("p");
+        var cleanedPx = playerTop.substr(0,playerLocationTop);
+        playerLocationTop = parseInt(cleanedPx);
+        console.log(playerLocationTop);
+        return playerLocationTop
+        break;
+
+      case "gameBoardTop":
+        var gameBoardTop = top.indexOf("p");
+        var cleanedPx = top.substr(0,gameBoardTop);
+        gameBoardTop = parseInt(cleanedPx);
+        console.log(gameBoardTop);
+        return gameBoardTop;
+        break;
+
+      case "gameBoardLeft":
+        var gameBoardLeft = left.indexOf("p");
+        var cleanedPx = left.substr(0,gameBoardLeft);
+        gameBoardLeft = parseInt(cleanedPx);
+        console.log(gameBoardLeft);
+        return gameBoardLeft;
+        break;
+      default:
+
+    }
+
+
+
+  }
+  var playerLocationTop = locationParse("playerLocationTop");
+  var playerLocationLeft = locationParse("playerLocationLeft");
+  var gameBoardLeft = locationParse("gameBoardLeft");
+  var gameBoardTop = locationParse("gameBoardTop");
+
+
+
+  // $( "html" ).keydown(function( event ) {
+  //   top = $(".game-board").css("top");
+  //   left = $(".game-board").css("left");
+  //   playerTop = $(".player").css("top");;
+  //   playerLeft = $(".player").css("left");;
+  //
+  //
+  // });
+
+
+
+
+//Arrow Key controls
   $( "html" ).keydown(function( event ) {
+
   if ( event.which == 38 && move != 0) {
     if ($(".actions-box").css("display")=="none") {
 
@@ -37,9 +134,78 @@ $( window ).on('load', function() {
       selection.play();
       event.preventDefault();
     }
-
-
   }});
+
+  $( "html" ).keydown(function( event ) {
+
+  if ( event.which == 38) {
+    gameBoardTop = gameBoardTop+2;
+    playerLocationTop--;
+    if ($(".actions-box").css("display")=="none") {
+      // $(".game-board").css("top", gameBoardTop);
+      $(".player").css("top", playerLocationTop);
+
+
+    }else{
+
+    }
+  }});
+  $( "html" ).keyup(function( event ) {
+
+  if ( event.which == 38) {
+
+
+    }else{
+
+    }
+  });
+
+  $( "html" ).keydown(function( event ) {
+
+  if ( event.which == 40) {
+    gameBoardTop--;
+    playerLocationTop++;
+    if ($(".actions-box").css("display")=="none") {
+      $(".player").css("top", playerLocationTop);
+
+    }else{
+
+    }
+  }});
+
+  $( "html" ).keydown(function( event ) {
+
+    if ( event.which == 37) {
+      gameBoardLeft++;
+      playerLocationLeft--;
+    if ($(".actions-box").css("display")=="none") {
+      $(".player").css("left", playerLocationLeft);
+
+    }else{
+
+    }
+  }});
+  $( "html" ).keydown(function( event ) {
+    if ( event.which == 39) {
+      gameBoardLeft--;
+      playerLocationLeft++;
+    if ($(".actions-box").css("display")=="none") {
+      $(".player").css("left", playerLocationLeft);
+
+    }else{
+
+    }
+  }});
+
+
+
+
+
+  $(".actions-close").on("click",function(){
+    $(".actions-box").toggle("display");
+    openReverse.play();
+  })
+
   $( "html" ).keydown(function( event ) {
   if (event.which == 40 && move < 60) {
     if ($(".actions-box").css("display")=="none") {
@@ -50,9 +216,9 @@ $( window ).on('load', function() {
       selection.play();
       event.preventDefault();
     }
-
-
   }});
+
+
   $( "html" ).keydown(function( event ) {
   if (event.which ==73) {
     if ($(".actions-box").css("display")=="none") {
@@ -85,9 +251,11 @@ $( window ).on('load', function() {
     }
     $(".settings-menu").toggle("display");
     event.preventDefault();
-
   }});
-
+  $(".settings-close").on("click",function(){
+    $(".settings-menu").toggle("display");
+    openReverse.play();
+  })
 
 
   $( "html" ).contextmenu(function() {
@@ -235,6 +403,7 @@ $( window ).on('load', function() {
 
 
 // destroy testing
+
 
 
 });

@@ -2,10 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="stylesheets/sass.css">
     <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
   crossorigin="anonymous"></script>
   <script type="text/javascript" src="js/functions.js"></script>
   <script type="text/javascript" src="js/generate-land.js"></script>
@@ -26,12 +31,16 @@
         <li><a href="#">Login</a></li>
       </ul>
     </div>
+
     <div class="game-board">
+      <div class="player" style="height:50px; width:50px; background-color:red; position:absolute; z-index:4; top:10px; left:10px;">
+  fdsafdsfa
+          </div>
 
     </div>
     <div class="actions-box">
       <div class="actions-box-title">
-        <p>Actions</p>
+        <p>Actions<img class="actions-close" style="float:right;" src="img/uipack-rpg/PNG/iconCross_grey.png" alt=""></p>
       </div>
       <div class="action-area">
 
@@ -50,7 +59,7 @@
     </div>
     <div class="settings-menu">
       <div class="actions-box-title">
-        <p>Settings</p>
+        <p>Settings<img class="settings-close" style="float:right;" src="img/uipack-rpg/PNG/iconCross_grey.png" alt=""></p>
       </div>
       <br>
       <p class="music-label">Music Volume: 50%</p>
