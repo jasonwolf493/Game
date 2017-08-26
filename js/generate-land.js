@@ -21,8 +21,7 @@ $( window ).on('load', function() {
     $( '.tile' ).each(function() {
 
       if ($(this).data("land-type")=="grass-tile") {
-        var targetTile = $(this).data("coords");
-        // console.log(getCoords($(this).data("coords")));
+        var targetTile = $(this).data("coords")
         var xRight = getCoords($(this).data("coords"),"x")+1;
         var xLeft = getCoords($(this).data("coords"),"x")-1;
         var yDown = getCoords($(this).data("coords"),"y")+1;
@@ -156,7 +155,6 @@ $( window ).on('load', function() {
             var positionX = 0;
             var positionY =0;
 
-            //console.log($(this).data("land-type"));
             if ($(this).data("land-type")=="grass-tile") {
               location = $(this).position();
               repositionX = Math.floor((Math.random() * 15) + 10);
@@ -178,7 +176,6 @@ $( window ).on('load', function() {
             var positionX = 0;
             var positionY =0;
 
-            //console.log($(this).data("land-type"));
             if ($(this).data("land-type")=="grass-tile") {
               location = $(this).position();
               repositionX = Math.floor((Math.random() * 40) + 10);
@@ -201,19 +198,12 @@ $( window ).on('load', function() {
             var positionX = 0;
             var positionY =0;
 
-            //console.log($(this).data("land-type"));
-
             if ($(this).data("land-type")=="grass-tile" && posibility =="15") {
               location = $(this).position();
               repositionX = Math.floor((Math.random() * 40) + 10);
               repositionY = Math.floor((Math.random() * 40) + 10);
-
               positionX = location.left+repositionX;
               positionY = location.top+repositionY;
-
-
-
-              // console.log(spot);
               $(".game-board").append("<img style='top:"+positionY+"px; left:"+positionX+"px; position:absolute; z-index:5; height:108px; width:135px; ' src=\"img/foliagepack/PNG/Retina/foliagePack_057.png\" class='boulder'></div>");
 
             }
@@ -227,7 +217,6 @@ beachGeneration();
         $(".grass").on("click" , function(){
           $(this).remove();
           dialog("grass destroyed");
-          console.log("grass");
         });
         $('img').on('dragstart', function(event) { event.preventDefault(); });
         $('div').on('dragstart', function(event) { event.preventDefault(); });

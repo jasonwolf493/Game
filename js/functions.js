@@ -4,9 +4,6 @@
 function dialog(output){
   var d = new Date();
   var n = d.getTime();
-  console.log(n);
-  console.log(n);
-  console.log(n);
   $('.dialog').finish();
   dialogBoxHeight = $('.dialog').css("height").replace(/\D/g,'');
   dialogBoxHeight = Number(dialogBoxHeight);
@@ -17,12 +14,10 @@ function dialog(output){
   $('.dialog').animate({height: dialogBoxHeight},300,function(){});
   $('.dialog-text[data-dialog="'+n+'"]').animate({opacity: 1},300,function(){});
   setTimeout(function(){
-    console.log("after");
     $('.dialog-text[data-dialog="'+n+'"]').animate({opacity: 0},900,function(){
       $('.dialog-text[data-dialog="'+n+'"]').remove();
       dialogBoxHeight = dialogBoxHeight-35;
       $('.dialog').animate({height: dialogBoxHeight},0,function(){});
-      console.log(dialogBoxHeight);
     });
 
   },5000);
@@ -82,29 +77,14 @@ $( window ).on('load', function() {
   $('.game-board').mousedown(handle_mousedown);
 
 
+var move = 0;
 
-  //sound testing
-  var musicVolume = 0.0;
-  var soundEffectsVolume = 0.0;
-  var move = 0;
-  var theme = new Audio('sound/theme.mp3');
-  var open = new Audio('sound/open-menu.wav');
-  var openReverse = new Audio('sound/open-menu-reverse.wav');
-  var selection = new Audio('sound/selection.wav');
-  selection.volume = soundEffectsVolume;
-  open.volume = soundEffectsVolume;
-  openReverse.volume = soundEffectsVolume;
-  theme.volume = musicVolume;
-  theme.play();
 
 
 
 
 //get location of gameboard. needs to be cleaned probably dont need gameboard anymore since we drag
   function locationParse(returnWhat){
-
-    var top = $(".game-board").css("top");
-    var left = $(".game-board").css("left");
     var playerTop = $(".player").css("top");
     var playerLeft = $(".player").css("left");
     switch (returnWhat) {
@@ -112,7 +92,6 @@ $( window ).on('load', function() {
         var playerLocationLeft = playerLeft.indexOf("p");
         var cleanedPx = playerLeft.substr(0,playerLocationLeft);
         playerLocationLeft = parseInt(cleanedPx);
-        console.log(playerLocationLeft);
         return playerLocationLeft;
         break;
 
@@ -120,47 +99,12 @@ $( window ).on('load', function() {
         var playerLocationTop = playerTop.indexOf("p");
         var cleanedPx = playerTop.substr(0,playerLocationTop);
         playerLocationTop = parseInt(cleanedPx);
-        console.log(playerLocationTop);
         return playerLocationTop
         break;
-
-      case "gameBoardTop":
-        var gameBoardTop = top.indexOf("p");
-        var cleanedPx = top.substr(0,gameBoardTop);
-        gameBoardTop = parseInt(cleanedPx);
-        console.log(gameBoardTop);
-        return gameBoardTop;
-        break;
-
-      case "gameBoardLeft":
-        var gameBoardLeft = left.indexOf("p");
-        var cleanedPx = left.substr(0,gameBoardLeft);
-        gameBoardLeft = parseInt(cleanedPx);
-        console.log(gameBoardLeft);
-        return gameBoardLeft;
-        break;
-      default:
-
     }
-
-
-
   }
   var playerLocationTop = locationParse("playerLocationTop");
   var playerLocationLeft = locationParse("playerLocationLeft");
-  var gameBoardLeft = locationParse("gameBoardLeft");
-  var gameBoardTop = locationParse("gameBoardTop");
-
-
-
-  // $( "html" ).keydown(function( event ) {
-  //   top = $(".game-board").css("top");
-  //   left = $(".game-board").css("left");
-  //   playerTop = $(".player").css("top");;
-  //   playerLeft = $(".player").css("left");;
-  //
-  //
-  // });
 
 
 
@@ -182,7 +126,6 @@ $( window ).on('load', function() {
   $( "html" ).keydown(function( event ) {
 
   if ( event.which == 38) {
-    gameBoardTop = gameBoardTop+2;
     playerLocationTop--;
     if ($(".actions-box").css("display")=="none") {
       // $(".game-board").css("top", gameBoardTop);
@@ -206,11 +149,9 @@ $( window ).on('load', function() {
   $( "html" ).keydown(function( event ) {
 
   if ( event.which == 40) {
-    gameBoardTop--;
     playerLocationTop++;
     if ($(".actions-box").css("display")=="none") {
       $(".player").css("top", playerLocationTop);
-
     }else{
 
     }
@@ -219,7 +160,6 @@ $( window ).on('load', function() {
   $( "html" ).keydown(function( event ) {
 
     if ( event.which == 37) {
-      gameBoardLeft++;
       playerLocationLeft--;
     if ($(".actions-box").css("display")=="none") {
       $(".player").css("left", playerLocationLeft);
@@ -230,7 +170,6 @@ $( window ).on('load', function() {
   }});
   $( "html" ).keydown(function( event ) {
     if ( event.which == 39) {
-      gameBoardLeft--;
       playerLocationLeft++;
     if ($(".actions-box").css("display")=="none") {
       $(".player").css("left", playerLocationLeft);
@@ -274,6 +213,8 @@ $( window ).on('load', function() {
     event.preventDefault();
 
   }});
+
+
   //Settings
 
   $(".settings").click(function(){
@@ -360,7 +301,7 @@ $( window ).on('load', function() {
     }
   }
 
-  //display tile data on hover
+  //display tile data on click
   $(".tile").click( function(){console.log($(this).data("coords"));})
   $(".tile").click( function(){console.log($(this).data("land-type"));})
 
@@ -397,8 +338,6 @@ $( window ).on('load', function() {
     x = x+1;
     y = y+multiplier;
     for (chanceDecrease; chanceDecrease > 0; chanceDecrease--) {
-
-
       chanceForXincrease = Math.floor((Math.random() * chanceDecrease) + 50);
       if (chanceForXincrease > 50) {
         chanceDecrease = chanceDecrease-5;
@@ -409,11 +348,7 @@ $( window ).on('load', function() {
         chanceDecrease = 0;
 
       }
-      //x = x+1;
-
     }
-
-
     y++
     x = x -10;
     chanceDecrease = 100;
@@ -426,27 +361,11 @@ $( window ).on('load', function() {
         x++;
       }else {
         chanceDecrease = 0;
-
       }
-      //x = x+1;
-
     }
-    // x = x+1;
-    // $('.tile[data-coords="'+x+','+y+'"]').css('background-color', 'green');
-    // console.log('.tile[data-coords="'+x+1+','+y+'"]');
   }
   var landMass = 50;
   for (var i = 0; i < landMass; i++) {
     landGeneration(getCoords(landStart,"x"),getCoords(landStart,"y"),i);
   }
-
-
-//Logic for creating beaches
-
-
-
-// destroy testing
-
-
-
 });
