@@ -1,4 +1,45 @@
+//Global functions
+
+//you guessed it this is the dialog output. this will display info to the player
+function dialog(output){
+  var d = new Date();
+  var n = d.getTime();
+  console.log(n);
+  console.log(n);
+  console.log(n);
+  $('.dialog').finish();
+  dialogBoxHeight = $('.dialog').css("height").replace(/\D/g,'');
+  dialogBoxHeight = Number(dialogBoxHeight);
+  dialogBoxHeight = dialogBoxHeight+35;
+  $(".dialog").append("<p class='dialog-text' data-dialog='"+n+"'  style='opacity:0; color:white; position:relative; top:35px; font-family:arial; padding:5px; border-radius:5px; background-color:rgba(0,0,0,0.8); margin-bottom:5px; line-height:130%;'>"+output+"</p>")
+  $('.dialog-text[data-dialog="'+n+'"]').animate({"opacity": "1","top": "5px"},300,function(){});
+
+  $('.dialog').animate({height: dialogBoxHeight},300,function(){});
+  $('.dialog-text[data-dialog="'+n+'"]').animate({opacity: 1},300,function(){});
+  setTimeout(function(){
+    console.log("after");
+    $('.dialog-text[data-dialog="'+n+'"]').animate({opacity: 0},900,function(){
+      $('.dialog-text[data-dialog="'+n+'"]').remove();
+      dialogBoxHeight = dialogBoxHeight-35;
+      $('.dialog').animate({height: dialogBoxHeight},0,function(){});
+      console.log(dialogBoxHeight);
+    });
+
+  },5000);
+}
+
+
+
+
 $( window ).on('load', function() {
+
+
+
+  // $(".game-board").append("<div class='tile' data-coords='"+X+","+Y+"' style=' background-color:blue; float:left; height:"+tileSize+"px; width:"+tileSize+"px; background-image: url(\"img/water-tile.png\");'></div>");
+  // $('.tile[data-coords="'+X+','+Y+'"]').data("land-type","water-tile");
+
+
+
 
   //Loading screen
   $(".main-loading").find("h1").css("animate", "unset");
@@ -6,6 +47,8 @@ $( window ).on('load', function() {
   $(".main-loading").find("h1").animate({opacity: 0, top:-100}, 500);
   $(".main-loading").find("h2").animate({opacity: 0, top: 200}, 800);
   $(".main-loading").animate({opacity: 0}, 800, function(){$(".main-loading").css("display", "none");$(".actions-bar").css("display", "inline-block");});
+
+
 
 //Set cursor
   $("html").css( 'cursor', 'url(img/uipack-rpg/PNG/cursorHand_beige.png), auto' );
@@ -41,8 +84,8 @@ $( window ).on('load', function() {
 
 
   //sound testing
-  var musicVolume = 0.1;
-  var soundEffectsVolume = 0.5;
+  var musicVolume = 0.0;
+  var soundEffectsVolume = 0.0;
   var move = 0;
   var theme = new Audio('sound/theme.mp3');
   var open = new Audio('sound/open-menu.wav');

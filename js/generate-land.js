@@ -226,6 +226,7 @@ beachGeneration();
         generateRocks();
         $(".grass").on("click" , function(){
           $(this).remove();
+          dialog("grass destroyed");
           console.log("grass");
         });
         $('img').on('dragstart', function(event) { event.preventDefault(); });
